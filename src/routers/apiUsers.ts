@@ -20,6 +20,11 @@ userRouter.post("/api/auth/register", (req, res) => {
     
 });
 
+userRouter.post("/api/auth/logOut", (req, res) => {
+    res.clearCookie("userId");
+    res.json({ message: "You have logged out"})
+});
+
 userRouter.post("/api/auth/login", async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
