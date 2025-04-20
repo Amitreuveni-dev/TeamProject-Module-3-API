@@ -14,7 +14,7 @@ html {
 body {
     font-family: serif;
     padding: 2rem 1rem;
-    background-color: EDF6F9;
+    background-color: #EDF6F9;
 }
  
 input, textarea, button {
@@ -39,13 +39,13 @@ main {
 h1 {
     font-size: 2.5rem;
     text-align: center;
-    color: 83C5BE;
+    color: #83C5BE;
     margin-bottom: 1rem;
 }
 h2 {
     font-size: 1.5rem;
     text-align: center;
-    color: 83C5BE;
+    color: #83C5BE;
     margin-bottom: 1rem;
 }
 pre #app {
@@ -58,7 +58,7 @@ button {
     margin: 0.2rem;
     padding: 0.7rem 1.2rem;
     font-size: 1rem;
-    background-color: FFDDD2;
+    background-color: #FFDDD2;
     color: black;
     border: none;
     border-radius: 0.5rem;
@@ -66,7 +66,7 @@ button {
     transition: background-color 0.2 ease;
 
     &:hover {
-        background-color: E29578;
+        background-color: #E29578;
         color: white;
     }
 }
