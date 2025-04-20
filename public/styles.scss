@@ -12,9 +12,11 @@ html {
 }
 
 body {
-    font-family: system-ui;
+    font-family: serif;
+    padding: 2rem 1rem;
+    background-color: EDF6F9;
 }
-
+ 
 input, textarea, button {
     font-size: inherit;
     font-family: inherit;
@@ -27,8 +29,118 @@ textarea {
 
 main {
     width: min(70ch, 100% - 2rem);
-    margin-inline: auto;
+    margin: 2rem auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: 83C5BE;
+    margin-bottom: 1rem;
+}
+h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    color: 83C5BE;
+    margin-bottom: 1rem;
+}
+pre #app {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+button {
+    margin: 0.2rem;
+    padding: 0.7rem 1.2rem;
+    font-size: 1rem;
+    background-color: FFDDD2;
+    color: black;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2 ease;
+
+    &:hover {
+        background-color: E29578;
+        color: white;
+    }
+}
+
+.load-btn {
+    display: inline-block;
+}
+
+.button-stack {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px hsl(0, 6%, 10%);
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid black;
+}
+
+textarea {
+    resize: vertical;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    
+    li {
+        border-radius: 0.5rem;
+        border: 1px solid black;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px hsl(0, 0%,80%);
+        overflow-wrap: break-word;
+    }
+
+    li.error {
+        color: red;
+        font-weight: bold;
+    }
+}
+
+.success-msg {
+    color: green;
+    font-weight: bold;
+}
+
+.welcome-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
