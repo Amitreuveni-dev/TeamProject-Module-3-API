@@ -1,6 +1,13 @@
 import { Schema, model } from "mongoose";
 
 const userSchema = new Schema({
+    _id: {
+        type: String,
+    },
+    email: {
+        type: String,
+        required: true,
+    },
     username: {
         type: String,
         required: true,
@@ -9,7 +16,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    content: String,
+    // content: String,
 }, { timestamps: true });
 
 export const User = model("User", userSchema);
