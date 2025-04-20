@@ -1,12 +1,12 @@
 import express from "express";
 
-const router = express.Router();
+export const ratingRouter = express.Router();
 
-router.get("/api/ratings/quizId", (req, res) => {
+ratingRouter.get("/api/ratings/quizId", (req, res) => {
 
 });
 
-router.post("/api/ratings/quizId", (req, res) => {
+ratingRouter.post("/api/ratings/quizId", (req, res) => {
 
 });
 

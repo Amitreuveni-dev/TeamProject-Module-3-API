@@ -1,28 +1,28 @@
 import express from "express";
 
-const router = express.Router();
+export const userRouter = express.Router();
 
 
-router.get("/api/users:id", (req, res) => {
-
-});
-router.get("/api/users:id/quizzes", (req, res) => {
+userRouter.get("/api/users:id", (req, res) => {
 
 });
-router.get("/api/users:id/scores", (req, res) => {
+userRouter.get("/api/users:id/quizzes", (req, res) => {
+
+});
+userRouter.get("/api/users:id/scores", (req, res) => {
 
 });
 
 
 
-router.post("/api/auth/register", (req, res) => {
+userRouter.post("/api/auth/register", (req, res) => {
     
 });
 
-router.post("/api/auth/login", (req, res) => {
+userRouter.post("/api/auth/login", (req, res) => {
     
 });
 
-router.get("/api/auth/me", (req, res) => {
+userRouter.get("/api/auth/me", (req, res) => {
 
 });
