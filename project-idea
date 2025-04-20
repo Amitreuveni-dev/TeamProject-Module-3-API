@@ -63,7 +63,7 @@ User, Quiz, Question, Score, Rating
 
 /api/auth, /api/quizzes, /api/ratings, etc.
 
- Add authentication (JWT)
+ Add authentication (CookieParser)
 
 Stage 3: Frontend Core
  Set up SPA routing (e.g., home, create, play/:id, profile)
