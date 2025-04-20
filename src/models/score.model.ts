@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const quizSchema = new Schema({
+const scoreSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -8,4 +8,4 @@ const quizSchema = new Schema({
     content: String,
 }, { timestamps: true });
 
-export const Quiz = model("Quiz", quizSchema);
+export const Score = model("Score", scoreSchema);

@@ -1,6 +1,6 @@
 import { Schema, model } from "mongoose";
 
-const schema = new Schema({
+const ratingSchema = new Schema({
     title: {
         type: String,
         required: true,
@@ -8,4 +8,4 @@ const schema = new Schema({
     content: String,
 }, { timestamps: true });
 
-export const Listing = model("Post", schema);
+export const Rating = model("Rating", ratingSchema);
