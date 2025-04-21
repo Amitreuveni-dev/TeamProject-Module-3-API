@@ -1,5 +1,7 @@
 import express from "express";
 import { User } from "../models/user.model";
+import cookieParser from "cookie-parser";
+import { authenticate } from "../middlewares/authenticate";
 
 export const userRouter = express.Router();
 
@@ -19,8 +21,15 @@ userRouter.get("/api/users:id/scores", (req, res) => {
 
 
 
-userRouter.post("/api/auth/register", (req, res) => {
-    
+userRouter.post("/api/auth/register", async (req, res) => {
+    const {email, username, password, confrimPassword} = req.body;
+  try {
+    if(password !== confrimPassword) {
+
+    }
+  } catch {
+
+  }
 });
 
 userRouter.post("/api/auth/logOut", (req, res) => {
@@ -56,6 +65,17 @@ userRouter.post("/api/auth/login", async (req, res) => {
 });
       
 
-userRouter.get("/api/auth/me", (req, res) => {
+userRouter.get("/api/auth/me", authenticate, async (req, res) => {
+  // try {
+  //   const foundUser = await User.findById(req.user.id).select("-password");
 
+  //   if (!foundUser) {
+  //     res.status(404).json({ message: "User not found" });
+  //     return;
+  //   }
+
+  //   res.json(foundUser);
+  // } catch (err) {
+  //   res.status(500).json("Server error");
+  // }
 });

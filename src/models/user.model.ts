@@ -16,7 +16,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    // content: String,
+    confrimPassword: {
+        type: String,
+        required: true,
+    },
 }, { timestamps: true });
 
 export const User = model("User", userSchema);

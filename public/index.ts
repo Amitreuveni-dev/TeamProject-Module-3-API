@@ -1,6 +1,12 @@
-export async function initApp(root: HTMLPreElement) {
-    const res = await fetch('/api/hello');
-    const data = await res.json();
+export async function checkLoginStatus() {
+    // const res = await fetch('/api/auth/me', {
+    //     credentials: 'include'
+    // });
 
-    root.textContent = JSON.stringify(data, null, 2);
-}
+    // if (res.ok) {
+    //     const user = await res.json();
+    //     return user;
+    // } else {
+    //     alert("Error, Must be register to create a quiz");
+    // }
+};
