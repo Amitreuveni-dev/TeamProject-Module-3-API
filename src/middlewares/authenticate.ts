@@ -8,6 +8,6 @@ export const authenticate: Handler = (req, res, next) => {
       return;
     }
   
-    (req as any).user = { id: userId };
+    req.user = { id: userId };
     next();
   };

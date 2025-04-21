@@ -3,18 +3,26 @@ import { User } from "../models/user.model";
 import cookieParser from "cookie-parser";
 import { authenticate } from "../middlewares/authenticate";
 
+declare module "express-serve-static-core" {
+  interface Request {
+    user?: {
+      id: string;
+    };
+  }
+}
+
 export const userRouter = express.Router();
 
 
-userRouter.get("/api/users:id", (req, res) => {
+userRouter.get("/api/users/:id", (req, res) => {
   const { id } = req.params; 
 
 });
-userRouter.get("/api/users:id/quizzes", (req, res) => {
+userRouter.get("/api/users/:id/quizzes", (req, res) => {
   const { id } = req.params; 
 
 });
-userRouter.get("/api/users:id/scores", (req, res) => {
+userRouter.get("/api/users/:id/scores", (req, res) => {
   const { id } = req.params; 
 
 });
@@ -66,16 +74,16 @@ userRouter.post("/api/auth/login", async (req, res) => {
       
 
 userRouter.get("/api/auth/me", authenticate, async (req, res) => {
-  // try {
-  //   const foundUser = await User.findById(req.user.id).select("-password");
+  try {
+    const foundUser = await User.findById(req.user?.id).select("-password");
 
-  //   if (!foundUser) {
-  //     res.status(404).json({ message: "User not found" });
-  //     return;
-  //   }
+    if (!foundUser) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
 
-  //   res.json(foundUser);
-  // } catch (err) {
-  //   res.status(500).json("Server error");
-  // }
+    res.json(foundUser);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
 });
