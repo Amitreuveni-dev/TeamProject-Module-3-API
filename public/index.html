@@ -17,21 +17,27 @@
             <a href="./register/index.html">
                 <button>Sign Up</button>
             </a>
-            <a href="./create/index.html">
-                <button id="createQuizBtn">Create your quiz</button>
-            </a>
+            <button id="createQuizBtn">Create your quiz</button>
         </nav>
     </header>
     <main>
         <h1>TeamProject</h1>
         <pre id="app"></pre>
-        
+
     </main>
 
     <script type="module">
-        // import { checkLoginStatus } from "./index.js";
+        import { checkLoginStatus } from "./index.js";
 
-        // checkLoginStatus(document.getElementById("app"));
+    document.getElementById("createQuizBtn").addEventListener("click", (e) => {
+        if(checkLoginStatus) {
+            debugger
+            alert("Error, You need to be logged in");
+        } else {
+            debugger
+            window.location.href = "./create/index.html"
+        }
+    });
     </script>
 </body>
 
