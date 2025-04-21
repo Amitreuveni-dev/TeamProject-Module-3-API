@@ -1,4 +1,6 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -16,8 +18,10 @@ body {
     padding: 2rem 1rem;
     background-color: #EDF6F9;
 }
- 
-input, textarea, button {
+
+input,
+textarea,
+button {
     font-size: inherit;
     font-family: inherit;
     line-height: inherit;
@@ -42,12 +46,14 @@ h1 {
     color: #83C5BE;
     margin-bottom: 1rem;
 }
+
 h2 {
     font-size: 1.5rem;
     text-align: center;
     color: #83C5BE;
     margin-bottom: 1rem;
 }
+
 pre #app {
     display: flex;
     flex-direction: column;
@@ -103,7 +109,8 @@ label {
     font-weight: bold;
 }
 
-input, textarea {
+input,
+textarea {
     padding: 0.5rem;
     border-radius: 0.5rem;
     border: 1px solid black;
@@ -118,13 +125,13 @@ ul {
     padding: 0;
     margin: 0;
     width: 100%;
-    
+
     li {
         border-radius: 0.5rem;
         border: 1px solid black;
         padding: 1rem;
         margin-bottom: 1rem;
-        box-shadow: 0 2px 4px hsl(0, 0%,80%);
+        box-shadow: 0 2px 4px hsl(0, 0%, 80%);
         overflow-wrap: break-word;
     }
 
@@ -143,4 +150,16 @@ ul {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+}
+
+a{
+    text-decoration: none;
+}
+
+.register-form {
+
+    .login-button {
+        text-align: center;
+    }
+
 }
