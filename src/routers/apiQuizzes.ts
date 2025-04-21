@@ -16,6 +16,7 @@ quizzesRouter.get("/api/quizzes?tag=math&sort=rating", (req, res) => {
 });
 
 quizzesRouter.post("/api/quizzes/:id/submit", (req, res) => {
+    const { id } = req.params;
 
 });
 

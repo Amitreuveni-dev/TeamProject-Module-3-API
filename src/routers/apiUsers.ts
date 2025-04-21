@@ -5,12 +5,15 @@ export const userRouter = express.Router();
 
 
 userRouter.get("/api/users:id", (req, res) => {
+  const { id } = req.params; 
 
 });
 userRouter.get("/api/users:id/quizzes", (req, res) => {
+  const { id } = req.params; 
 
 });
 userRouter.get("/api/users:id/scores", (req, res) => {
+  const { id } = req.params; 
 
 });
 
