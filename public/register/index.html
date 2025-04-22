@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles.css">
     <title>Sign Up</title>
 </head>
+
 <body>
     <header>
         <a href="../index.html">
-            <button>Back</button>
+            <button>Home Page</button>
         </a>
     </header>
     <main>
         <h1>Sign Up</h1>
 
-        <form name="register-form">
+        <form id="register-form">
             <label for="email">Email</label>
-            <input name="email" type="text" required>
+            <input id="email" name="email" type="text" required>
 
             <label for="username">Username</label>
-            <input name="username" type="text" required>
+            <input id="username" name="username" type="text" required>
 
             <label for="password">Password</label>
-            <input name="password" type="password" required>
+            <input id="password" name="password" type="password" required>
+
+            <label for="confirmedPassword">Confirm Password</label>
+            <input id="confirmedPassword" name="confirmedPassword" type="password" required>
 
             <button type="submit">Register</button>
 
-            <h2>have an account already click on the button below <br>👇</br> </h2>
-            <a href="../login/index.html">
-                <button class="login-button">Login</button>
-            </a>
         </form>
+        <h2>have an account already click on the button below! </h2>
+        <a href="../login/index.html">
+            <button class="login-button">Sign In</button>
+        </a>
     </main>
+
+    <script type="module" src="register.js" defer></script>
 </body>
+
 </html>

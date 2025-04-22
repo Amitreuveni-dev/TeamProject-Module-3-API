@@ -152,14 +152,12 @@ ul {
     margin-bottom: 0.5rem;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
-.register-form {
-
-    .login-button {
-        text-align: center;
-    }
-
+.login-button {
+    text-align: center;
+    display: flex;
+    justify-content: center;
 }

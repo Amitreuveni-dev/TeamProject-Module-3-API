@@ -6,7 +6,5 @@ import { ratingRouter } from "./apiRating";
 
 export const router = express.Router();
 
-router.get("/hello", (_, res) => {
-    res.json({ message: "Hello World!" });
-});
+router.use(userRouter);
 

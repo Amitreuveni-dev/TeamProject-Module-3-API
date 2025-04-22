@@ -17,5 +17,5 @@ app.use(cookieParser(process.env.SESSION_SECRET));
 app.use("/api", apiRouter);
 app.use(express.static(path.resolve(__dirname, "..", "public")));
 app.use((_, res) => {
-    res.redirect("404.html");
+    res.status(404).sendFile(path.resolve(__dirname, "..", "public", "404.html"));
 });

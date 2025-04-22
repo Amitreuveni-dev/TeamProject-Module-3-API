@@ -21,14 +21,17 @@
         </nav>
     </header>
     <main>
-        <h1>TeamProject</h1>
+        <h1>Quizly</h1>
+        <h2>Welcome to Quizly, the ultimate platform for creating and taking quizzes!
+             Test your knowledge or challenge your friends today.</h2>
+
         <pre id="app"></pre>
 
     </main>
 
     <script type="module">
         import { checkLoginStatus } from "./index.js";
-    
+
         document.getElementById("createQuizBtn").addEventListener("click", (e) => {
             checkLoginStatus().then((isLoggedIn) => {
                 if (isLoggedIn) {
