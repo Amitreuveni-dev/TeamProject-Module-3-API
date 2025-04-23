@@ -40,7 +40,7 @@ export async function checkLoginStatus(): Promise<boolean> {
 
 export async function loadFeaturedQuizzes(): Promise<void> {
     try {
-        const res = await fetch('/api/quizzes');
+        const res = await fetch("/quizzes");
         if (!res.ok) throw new Error('Failed to fetch quizzes');
 
         const quizzes = await res.json();
