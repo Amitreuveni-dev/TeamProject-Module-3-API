@@ -1,10 +1,15 @@
 import express from "express";
+import { Quiz } from "../models/quiz.model";
 
 export const quizzesRouter = express.Router();
 
-
-quizzesRouter.get("/api/quizzes", (req, res) => {
-
+quizzesRouter.get("/api/quizzes", async (req, res) => {
+    try {
+        const quizzes = await Quiz.find().select("quizName category rating");
+        res.json(quizzes);
+    } catch (err) {
+        res.status(500).json({ message: "Failed to fetch quizzes" });
+    }
 });
 
 quizzesRouter.get("/api/quizzes/:id", (req, res) => {
@@ -21,8 +26,38 @@ quizzesRouter.post("/api/quizzes/:id/submit", (req, res) => {
 });
 
 
-quizzesRouter.post("/api/quizzes", (req, res) => {
+quizzesRouter.post("/api/quizzes", async (req, res) => {
+    try {
+        const { quizName, category, userId, questions } = req.body;
 
+        // Validate required fields
+        if (!quizName || !category || !userId || !questions || !Array.isArray(questions)) {
+            return res.status(400).json({ message: "Invalid input. Please provide all required fields." });
+        }
+
+        // Validate questions
+        for (const question of questions) {
+            if (!question.questionText || !question.options || !question.correctAnswer) {
+                return res.status(400).json({ message: "Each question must have a questionText, options, and correctAnswer." });
+            }
+        }
+
+        // Create a new quiz
+        const newQuiz = new Quiz({
+            quizName,
+            category,
+            userId,
+            questions,
+        });
+
+        // Save the quiz to the database
+        const savedQuiz = await newQuiz.save();
+
+        res.status(201).json({ message: "Quiz created successfully", quiz: savedQuiz });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Failed to create quiz" });
+    }
 });
 
 
