@@ -9,10 +9,6 @@ const quizSchema = new Schema({
         type: String,
         required: true,
     },
-    quizId: {
-        type: String,
-        required: true,
-    },
     userId: {
         type: String,
         required: true,

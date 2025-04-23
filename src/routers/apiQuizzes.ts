@@ -32,13 +32,15 @@ quizzesRouter.post("/api/quizzes", async (req, res) => {
 
         // Validate required fields
         if (!quizName || !category || !userId || !questions || !Array.isArray(questions)) {
-            return res.status(400).json({ message: "Invalid input. Please provide all required fields." });
+          res.status(400).json({ message: "Invalid input. Please provide all required fields." });
+          return;
         }
 
         // Validate questions
         for (const question of questions) {
             if (!question.questionText || !question.options || !question.correctAnswer) {
-                return res.status(400).json({ message: "Each question must have a questionText, options, and correctAnswer." });
+               res.status(400).json({ message: "Each question must have a questionText, options, and correctAnswer." });
+               return;
             }
         }
 
