@@ -13,6 +13,7 @@ app.use((req, _, next) => {
     next();
 });
 
+
 app.use(json());
 app.use(cookieParser(process.env.SESSION_SECRET));
 
@@ -91,9 +92,7 @@ app.post("/login", async (req, res) => {
     }
 });
 
-
-
-app.get("/me", authenticate, async (req, res) => {
+app.get("/api/me", authenticate, async (req, res) => {
     try {
         const foundUser = await User.findById(req.user?.id).select("-password");
 
