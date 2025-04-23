@@ -6,5 +6,7 @@ import { ratingRouter } from "./apiRating";
 
 export const router = express.Router();
 
-router.use(userRouter);
-
+router.use("/users", userRouter);
+router.use("/quizzes", quizzesRouter);
+router.use("/scores", scoresRouter);
+router.use("/ratings", ratingRouter);
