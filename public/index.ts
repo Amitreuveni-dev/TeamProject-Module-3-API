@@ -1,15 +1,45 @@
-export async function checkLoginStatus() {
-    const res = await fetch("/api/me", {
-        credentials: 'include'
-    });
+export async function checkLoginStatus(): Promise<boolean> {
+    try {
+        const res = await fetch("/api/me", {
+            credentials: "include",
+        });
 
-    if (res.ok) {
-        return true;
-    } else {
-        alert("Error, Must be register to create a quiz");
+        const navButtons = document.getElementById("nav-buttons");
+
+        if (res.ok) {
+            // User is logged in
+            if (navButtons) {
+                navButtons.innerHTML = `
+                    <button id="profileBtn">
+                        <img src="/assets/profile-icon.png" alt="Profile" style="width: 30px; height: 30px; border-radius: 50%;" />
+                    </button>
+                `;
+
+                // Add event listener for profile button
+                document.getElementById("profileBtn")?.addEventListener("click", () => {
+                    window.location.href = "./profile/index.html";
+                });
+            }
+            return true;
+        } else {
+            // User is not logged in
+            if (navButtons) {
+                navButtons.innerHTML = `
+                    <a href="./login/index.html">
+                        <button>Sign In</button>
+                    </a>
+                    <a href="./register/index.html">
+                        <button>Sign Up</button>
+                    </a>
+                `;
+            }
+            return false;
+        }
+    } catch (err) {
+        console.error("Error checking login status:", err);
         return false;
     }
-};
+}
 
 export async function loadFeaturedQuizzes(): Promise<void> {
     try {

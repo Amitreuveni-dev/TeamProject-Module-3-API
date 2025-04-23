@@ -10,7 +10,10 @@
 
 <body>
     <header>
-        <nav>
+        <nav id="nav-buttons">
+            <!-- Buttons will be dynamically updated here -->
+        </nav>
+        <!-- <nav>
             <a href="./login/index.html">
                 <button>Sign In</button>
             </a>
@@ -18,7 +21,7 @@
                 <button>Sign Up</button>
             </a>
             <button id="createQuizBtn">Create your quiz</button>
-        </nav>
+        </nav> -->
     </header>
     <main>
         <!-- Hero Section -->
@@ -39,14 +42,19 @@
     </main>
 
     <script type="module">
-        import { checkLoginStatus } from "./index.js";
-
+        import { checkLoginStatus, loadFeaturedQuizzes } from "./index.js";
+    
+       
+        checkLoginStatus();
+        loadFeaturedQuizzes();
+    
         document.getElementById("createQuizBtn").addEventListener("click", (e) => {
             checkLoginStatus().then((isLoggedIn) => {
                 if (isLoggedIn) {
                     window.location.href = "./create/index.html";
+                } else {
+                    alert("You need to be logged in to create a quiz");
                 }
-                
             }).catch((error) => {
                 console.error("Error checking login status:", error);
                 alert("Something went wrong. Please try again.");
