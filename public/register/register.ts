@@ -20,7 +20,7 @@ window.onload = () => {
       const password = passwordInput.value;
       const confirmPassword = confirmPasswordInput.value;
 
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch("/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

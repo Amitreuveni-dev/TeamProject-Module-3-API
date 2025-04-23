@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = (document.getElementById("email") as HTMLInputElement).value;
       const password = (document.getElementById("password") as HTMLInputElement).value;
 
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("/login", {
         method: "POST",
         credentials: "include",
         headers: {
