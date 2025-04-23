@@ -4,7 +4,6 @@ export async function checkLoginStatus() {
     });
 
     if (res.ok) {
-        const user = await res.json();
         return true;
     } else {
         alert("Error, Must be register to create a quiz");

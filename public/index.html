@@ -36,9 +36,8 @@
             checkLoginStatus().then((isLoggedIn) => {
                 if (isLoggedIn) {
                     window.location.href = "./create/index.html";
-                } else {
-                    alert("You need to be logged in to create a quiz");
                 }
+                
             }).catch((error) => {
                 console.error("Error checking login status:", error);
                 alert("Something went wrong. Please try again.");
