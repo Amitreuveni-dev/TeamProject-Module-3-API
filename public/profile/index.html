@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Your Profile</title>
 </head>
 <body>
     <header>
@@ -12,8 +12,17 @@
         </a>
         <h1>Your Profile</h1>
     </header>
-    <main>
 
+    <main>
+        <div id="profile-info">
+            <p>Loading...</p>
+        </div>
     </main>
+
+    <script type="module">
+        import { getProfileData } from './profile.js';
+        
+        window.onload = getProfileData;
+    </script>
 </body>
 </html>
