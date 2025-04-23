@@ -6,7 +6,7 @@ const quizSchema = new Schema({
         required: true,
     },
     category: {
-        type : String,
+        type: String,
         required: true,
     },
     quizId: {
@@ -20,15 +20,19 @@ const quizSchema = new Schema({
     rating: {
         type: Number,
         required: true,
+        default: 0,
     },
     createdAt: {
         type: Date,
-        required: true,
+        default: Date.now,
     },
-    question: {
-        type: String,
-        required: true,
-    },
+    questions: [
+        {
+            questionText: { type: String, required: true },
+            options: [{ type: String, required: true }],
+            correctAnswer: { type: String, required: true },
+        },
+    ],
 }, { timestamps: true });
 
 export const Quiz = model("Quiz", quizSchema);

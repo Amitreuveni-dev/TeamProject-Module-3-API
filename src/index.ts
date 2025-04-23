@@ -4,6 +4,8 @@ import { createServer } from "http";
 import mongoose from "mongoose";
 import { app } from "./app";
 
+
+
 const server = createServer(app);
 const port = process.env.PORT || 8000;
 
@@ -16,3 +18,4 @@ async function init() {
 }
 
 init();
+
