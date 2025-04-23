@@ -34,9 +34,36 @@
                 <option value="other">Other</option>
             </select>
 
+            <label for="question">Question</label>
+            <input name="question" type="text">
+
+            <label for="option1">Option 1</label>
+            <input name="option1" type="text">
+
+            <label for="option2">Option 2</label>
+            <input name="option2" type="text">
+
+            <label for="option3">Option 3</label>
+            <input name="option3" type="text">
+
+            <label for="option4">Option 4</label>
+            <input name="option4" type="text">
+
+            <label for="correctAnswer">Correct Answer</label>
+            <input type="radio" name="correctAnswer" value="0">Option 1
+            <input type="radio" name="correctAnswer" value="1">Option 2
+            <input type="radio" name="correctAnswer" value="2">Option 3
+            <input type="radio" name="correctAnswer" value="3">Option 4
+
             <button type="submit">Create</button>
         </form>
+        <button id="add-question">Add Question</button>
     </main>
+
+    <script type="module">
+        import { Question, Quiz } from "./create.js";
+        
+    </script>
 </body>
 
 </html>
