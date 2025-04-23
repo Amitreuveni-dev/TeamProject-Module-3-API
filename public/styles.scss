@@ -163,3 +163,51 @@ a{
     }
 
 }
+
+
+#hero {
+    text-align: center;
+    padding: 2rem;
+    background: #e8f5e9;
+  }
+  
+  #hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  #hero p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  #hero button {
+    background: #FFDDD2;
+    color: black;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  #hero button:hover {
+    background-color: #E29578;
+    color: white;
+  }
+  
+  /* Featured Quizzes */
+  #featured-quizzes {
+    padding: 2rem;
+  }
+  
+  #featured-quizzes h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  
+  #quiz-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
