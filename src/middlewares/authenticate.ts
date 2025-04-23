@@ -1,4 +1,3 @@
-import cookieParser from "cookie-parser";
 import { Handler } from "express";
 
 export const authenticate: Handler = (req, res, next) => {

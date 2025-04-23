@@ -1,15 +1,6 @@
 import express from "express";
 import { User } from "../models/user.model";
-import cookieParser from "cookie-parser";
 import { authenticate } from "../middlewares/authenticate";
-
-declare module "express-serve-static-core" {
-  interface Request {
-    user?: {
-      id: string;
-    };
-  }
-}
 
 export const userRouter = express.Router();
 
