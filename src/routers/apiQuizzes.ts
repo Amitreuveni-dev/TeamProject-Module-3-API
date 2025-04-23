@@ -12,58 +12,86 @@ quizzesRouter.get("/api/quizzes", async (req, res) => {
     }
 });
 
-quizzesRouter.get("/api/quizzes/:id", (req, res) => {
+quizzesRouter.get("/api/quizzes/:id", async (req, res) => {
     const { id } = req.params;
+    try {
+        const quiz = await Quiz.findById(id);
+        if (!quiz) {
+            res.status(404).json({ message: "Quiz not found" });
+            return;
+        }
+        res.json(quiz);
+    } catch (err) {
+        res.status(500).json({ message: "Failed to fetch quiz" });
+    }
 });
 
-quizzesRouter.get("/api/quizzes?tag=math&sort=rating", (req, res) => {
-
+quizzesRouter.get("/api/quizzes/filter/search", async (req, res) => {
+    const { tag, sort } = req.query;
+    try {
+        let query = tag ? { category: tag } : {};
+        let quizzes = await Quiz.find(query);
+        if (sort === "rating") {
+            quizzes = quizzes.sort((a, b) => b.rating - a.rating);
+        }
+        res.json(quizzes);
+    } catch (err) {
+        res.status(500).json({ message: "Failed to filter quizzes" });
+    }
 });
 
-quizzesRouter.post("/api/quizzes/:id/submit", (req, res) => {
+quizzesRouter.post("/api/quizzes/:id/submit", async (req, res) => {
     const { id } = req.params;
-
+    const { answers } = req.body;
+    try {
+        const quiz = await Quiz.findById(id);
+        if (!quiz) {
+            res.status(404).json({ message: "Quiz not found" });
+            return;
+        }
+        let score = 0;
+        quiz.questions.forEach((q, i) => {
+            if (q.correctAnswer === answers[i]) {
+                score++;
+            }
+        });
+        res.json({ score, total: quiz.questions.length });
+    } catch (err) {
+        res.status(500).json({ message: "Failed to submit quiz" });
+    }
 });
-
 
 quizzesRouter.post("/api/quizzes", async (req, res) => {
     try {
         const { quizName, category, userId, questions } = req.body;
-
-        // Validate required fields
         if (!quizName || !category || !userId || !questions || !Array.isArray(questions)) {
-          res.status(400).json({ message: "Invalid input. Please provide all required fields." });
-          return;
+            res.status(400).json({ message: "Invalid input. Please provide all required fields." });
+            return;
         }
-
-        // Validate questions
         for (const question of questions) {
-            if (!question.questionText || !question.options || !question.correctAnswer) {
-               res.status(400).json({ message: "Each question must have a questionText, options, and correctAnswer." });
-               return;
+            if (!question.questionText || !question.options || question.correctAnswer == null) {
+                res.status(400).json({ message: "Each question must have a questionText, options, and correctAnswer." });
+                return;
             }
         }
-
-        // Create a new quiz
-        const newQuiz = new Quiz({
-            quizName,
-            category,
-            userId,
-            questions,
-        });
-
-        // Save the quiz to the database
+        const newQuiz = new Quiz({ quizName, category, userId, questions });
         const savedQuiz = await newQuiz.save();
-
         res.status(201).json({ message: "Quiz created successfully", quiz: savedQuiz });
     } catch (err) {
-        console.error(err);
         res.status(500).json({ message: "Failed to create quiz" });
     }
 });
 
-
-quizzesRouter.delete("/api/quizzes/:id", (req, res) => {
+quizzesRouter.delete("/api/quizzes/:id", async (req, res) => {
     const { id } = req.params;
+    try {
+        const deleted = await Quiz.findByIdAndDelete(id);
+        if (!deleted) {
+            res.status(404).json({ message: "Quiz not found" });
+            return;
+        }
+        res.json({ message: "Quiz deleted successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Failed to delete quiz" });
+    }
 });
-
