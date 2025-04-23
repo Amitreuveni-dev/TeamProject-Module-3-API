@@ -11,44 +11,31 @@
 <body>
     <header>
         <nav id="nav-buttons">
-            <!-- Buttons will be dynamically updated here -->
         </nav>
-        <!-- <nav>
-            <a href="./login/index.html">
-                <button>Sign In</button>
-            </a>
-            <a href="./register/index.html">
-                <button>Sign Up</button>
-            </a>
-            <button id="createQuizBtn">Create your quiz</button>
-        </nav> -->
+            <button id="createQuizBtn">Create Your Quiz</button>
     </header>
+
     <main>
-        <!-- Hero Section -->
         <section id="hero">
             <h1>Welcome to Quizly</h1>
             <p>Create, play, and share quizzes with friends and the world!</p>
             <button id="startQuizBtn">Start Exploring</button>
         </section>
 
-        <!-- Featured Quizzes Section -->
         <section id="featured-quizzes">
             <h2>Featured Quizzes</h2>
             <div id="quiz-list">
-                <!-- Quizzes will be dynamically loaded here -->
             </div>
         </section>
-
     </main>
 
     <script type="module">
         import { checkLoginStatus, loadFeaturedQuizzes } from "./index.js";
-    
-       
+
         checkLoginStatus();
         loadFeaturedQuizzes();
-    
-        document.getElementById("createQuizBtn").addEventListener("click", (e) => {
+
+        document.getElementById("createQuizBtn")?.addEventListener("click", (e) => {
             checkLoginStatus().then((isLoggedIn) => {
                 if (isLoggedIn) {
                     window.location.href = "./create/index.html";

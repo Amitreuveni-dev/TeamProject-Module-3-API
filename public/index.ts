@@ -7,7 +7,6 @@ export async function checkLoginStatus(): Promise<boolean> {
         const navButtons = document.getElementById("nav-buttons");
 
         if (res.ok) {
-            // User is logged in
             if (navButtons) {
                 navButtons.innerHTML = `
                     <button id="profileBtn">
@@ -15,14 +14,12 @@ export async function checkLoginStatus(): Promise<boolean> {
                     </button>
                 `;
 
-                // Add event listener for profile button
                 document.getElementById("profileBtn")?.addEventListener("click", () => {
                     window.location.href = "./profile/index.html";
                 });
             }
             return true;
         } else {
-            // User is not logged in
             if (navButtons) {
                 navButtons.innerHTML = `
                     <a href="./login/index.html">
@@ -50,7 +47,7 @@ export async function loadFeaturedQuizzes(): Promise<void> {
         const quizList = document.getElementById('quiz-list');
 
         if (quizList) {
-            quizList.innerHTML = quizzes.map((quiz: { _id: string; quizName: string; category: string; rating: number }) => `
+            quizList.innerHTML = quizzes.map((quiz) => `
                 <article class="quiz-card">
                     <h3>${quiz.quizName}</h3>
                     <p>Category: ${quiz.category}</p>
