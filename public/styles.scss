@@ -253,3 +253,27 @@ a {
     background-color: #E29578;
     color: white;
 }
+
+#nav-buttons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+#profileBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+#profileBtn img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+#profileBtn img:hover {
+    transform: scale(1.1);
+}
